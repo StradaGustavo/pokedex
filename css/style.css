@@ -96,22 +96,50 @@ main{
     font-size: 1rem;
 }
 
+
+.suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .suggestions li {
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .suggestions li:hover {
+    background: #f0f0f0;
+  }
+
+
 /* == Media query == */
 
-@media (min-width: 500px) and (max-width: 1023px) and (min-height: 667px) {
-    main {
-        margin-top: 0.6%;
+@media (min-width: 500px) and (min-height: 667px){
+    main{
+        margin-top: 2%;
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1199px) {
-    main {
+@media (min-width: 500px) and (min-height: 778px){
+    main{
+        margin-top: 11.6%;
+    }
+}
+
+@media (min-width: 1024px){
+    main{
         margin-top: 5.3%;
     }
 }
 
-@media (min-width: 1400px) {
-    main {
+@media (min-width: 1400px){
+    main{
         margin-top: 4.1%;
     }
 }
