@@ -3,8 +3,17 @@ In this project, I use HTML, CSS, and JavaScript to create an interactive Pokéd
 
 ## Project Image:
 
+<p> Inicial image:</p>
+
 ![Pokédex Preview](images/1.jpeg)
+
+<p> Searching pokémon by id:</p>
+
 ![Pokédex Preview](images/2.jpeg)
+
+<p> Searching  pokémon by name:</p>
+
+
 ![Pokédex Preview](images/3.jpeg)
 
 
