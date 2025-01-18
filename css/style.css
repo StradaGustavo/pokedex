@@ -96,29 +96,64 @@ main{
     font-size: 1rem;
 }
 
+.search-container{
+    position: relative;
+}
 
 .suggestions {
     position: absolute;
-    background: white;
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
     width: 100%;
-    z-index: 1000;
-    list-style: none;
+    max-height: 200px;
+    margin-top: 5px;
     padding: 0;
-    margin: 0;
-  }
-  .suggestions li {
-    padding: 8px 10px;
+    list-style: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.suggestions .suggestion-item {
+    text-align: left;
+    text-transform: capitalize;
+    padding: 10px;
     cursor: pointer;
-  }
-  .suggestions li:hover {
-    background: #f0f0f0;
-  }
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+.suggestions .suggestion-item:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.input-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: solid 2px #333;    
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-search:focus {
+    border-color: #007bff;
+    box-shadow: -3px 4px #888, -5px 7px #333;
+}
+
 
 
 /* == Media query == */
+
+@media (max-width: 480px) {
+    .suggestions {
+        max-height: 150px; 
+        font-size: 14px; 
+    }
+}
 
 @media (min-width: 500px) and (min-height: 667px){
     main{
