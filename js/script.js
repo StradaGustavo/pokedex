@@ -4,13 +4,12 @@ const pokemonImage = document.querySelector('.pokemon-img');
 
 const form = document.querySelector('.form');
 const input = document.querySelector('.input-search');
-const suggestionsList = document.querySelector('.suggestions'); // Adicione este elemento no HTML
+const suggestionsList = document.querySelector('.suggestions'); 
 const buttonPrev = document.querySelector('.btn-prev');
 const buttonNext = document.querySelector('.btn-next');
 
 let searchPokemon = 1;
 
-// Lista de gerações disponíveis para sprites animados
 const animatedGenerations = [
     'generation-v',
     'generation-iv',
@@ -19,7 +18,6 @@ const animatedGenerations = [
     'generation-i',
 ];
 
-// Função para buscar os dados do Pokémon
 const fetchPokemon = async (pokemon) => {
     try {
         const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
@@ -31,7 +29,6 @@ const fetchPokemon = async (pokemon) => {
     }
 };
 
-// Função para buscar nomes de Pokémon
 const fetchPokemonNames = async () => {
     try {
         const APIResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000'); // Obtém todos os Pokémon
@@ -45,7 +42,6 @@ const fetchPokemonNames = async () => {
     }
 };
 
-// Função para encontrar o sprite animado disponível
 const getAnimatedSprite = (sprites) => {
     for (const generation of animatedGenerations) {
         const sprite = sprites?.versions?.[generation]?.['black-white']?.animated?.front_default;
@@ -53,10 +49,9 @@ const getAnimatedSprite = (sprites) => {
             return sprite;
         }
     }
-    return null; // Retorna null se nenhum sprite animado for encontrado
+    return null; 
 };
 
-// Função para renderizar o Pokémon
 const renderPokemon = async (pokemon) => {
     pokemonName.innerHTML = 'Loading...';
     pokemonNumber.innerHTML = '';
@@ -68,13 +63,12 @@ const renderPokemon = async (pokemon) => {
         pokemonName.innerHTML = data.name;
         pokemonNumber.innerHTML = `#${data.id}`;
 
-        // Buscar o sprite animado
         const animatedSprite = getAnimatedSprite(data.sprites);
 
         if (animatedSprite) {
             pokemonImage.src = animatedSprite;
         } else {
-            pokemonImage.src = data.sprites.front_default; // Fallback para sprite padrão
+            pokemonImage.src = data.sprites.front_default;
         }
 
         input.value = '';
@@ -86,40 +80,44 @@ const renderPokemon = async (pokemon) => {
     }
 };
 
-// Função para exibir sugestões
 const showSuggestions = async (query) => {
     const pokemonNames = await fetchPokemonNames();
     const filteredNames = pokemonNames.filter((name) => name.startsWith(query.toLowerCase()));
-    suggestionsList.innerHTML = ''; // Limpa as sugestões anteriores
+    suggestionsList.innerHTML = ''; 
 
-    filteredNames.slice(0, 10).forEach((name) => { // Limita a 10 sugestões
+    filteredNames.slice(0, 10).forEach((name) => { 
         const listItem = document.createElement('li');
-        listItem.textContent = name;
+
+        const highlightedName = name.replace(
+            new RegExp(`^(${query})`, 'i'), 
+            `<span class="highlight">$1</span>` 
+        );
+
+        listItem.innerHTML = highlightedName; 
         listItem.classList.add('suggestion-item');
         listItem.addEventListener('click', () => {
             input.value = name;
             renderPokemon(name);
-            suggestionsList.innerHTML = ''; // Limpa as sugestões após a seleção
+            suggestionsList.innerHTML = ''; 
         });
         suggestionsList.appendChild(listItem);
     });
 };
 
-// Listener para buscar sugestões enquanto digita
+
 input.addEventListener('input', (event) => {
     const query = event.target.value.trim();
     if (query) {
         showSuggestions(query);
     } else {
-        suggestionsList.innerHTML = ''; // Limpa as sugestões se o campo estiver vazio
+        suggestionsList.innerHTML = ''; 
     }
 });
 
-// Listeners de eventos para o formulário e botões de navegação
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     renderPokemon(input.value.toLowerCase());
-    suggestionsList.innerHTML = ''; // Limpa as sugestões após a busca
+    suggestionsList.innerHTML = ''; 
 });
 
 buttonPrev.addEventListener('click', () => {
@@ -134,5 +132,27 @@ buttonNext.addEventListener('click', () => {
     renderPokemon(searchPokemon);
 });
 
-// Renderizar o Pokémon inicial
 renderPokemon(searchPokemon);
+
+document.addEventListener('click', (event) => {
+    if (!form.contains(event.target)) {
+        suggestionsList.innerHTML = ''; 
+    }
+});
+
+
+document.addEventListener('click', (event) => {
+    if (!form.contains(event.target)) {
+        suggestionsList.classList.remove('visible');
+    }
+});
+
+input.addEventListener('input', (event) => {
+    const query = event.target.value.trim();
+    if (query) {
+        showSuggestions(query);
+        suggestionsList.classList.add('visible'); 
+    } else {
+        suggestionsList.classList.remove('visible'); 
+    }
+});
