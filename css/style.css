@@ -165,25 +165,31 @@ main{
     }
 }
 
-@media (min-width: 500px) {
+@media (max-width: 500px) {
     main {
         margin-top: 10.5%;
     }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     main {
         margin-top: 5.5%;
     }
 }
 
-@media (min-width: 1400px) {
+@media (max-width: 1360px) {
+    main {
+        margin-bottom: 3%;
+    }
+}
+
+@media (max-width: 1400px) {
     main {
         margin-top: 4.1%;
     }
 }
 
-@media (min-width: 1600px) {
+@media (max-width: 1600px) {
     main {
         margin-top: 3.8%;    
     }
