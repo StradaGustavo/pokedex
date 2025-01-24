@@ -20,7 +20,7 @@ body{
 main{
     position: relative;
     display: inline-block;
-    margin-top: 3%;
+    margin-top: 3.8%;
     padding: 15px;
 }
 
@@ -95,3 +95,102 @@ main{
     box-shadow: inset -4px 4px 0 #222;
     font-size: 1rem;
 }
+
+.search-container{
+    position: relative;
+}
+
+.suggestions {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.suggestions .suggestion-item {
+    text-align: left;
+    text-transform: capitalize;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+.suggestions .suggestion-item:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.suggestions {
+    display: none;
+}
+
+.suggestions.visible {
+    display: block;
+}
+
+.input-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: solid 2px #333;    
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-search:focus {
+    border-color: #007bff;
+    box-shadow: -3px 4px #888, -5px 7px #333;
+}
+
+.highlight {
+    font-weight: 750;
+    color: #007bff;
+}
+
+
+@media (max-width: 480px) {
+    .suggestions {
+        max-height: 150px; 
+        font-size: 14px; 
+    }
+}
+
+@media (max-width: 500px) {
+    main {
+        margin-top: 10.5%;
+    }
+}
+
+@media (max-width: 1024px) {
+    main {
+        margin-top: 5.5%;
+    }
+}
+
+@media (max-width: 1360px) {
+    main {
+        margin-bottom: 3%;
+    }
+}
+
+@media (max-width: 1400px) {
+    main {
+        margin-top: 4.1%;
+    }
+}
+
+@media (max-width: 1600px) {
+    main {
+        margin-top: 3.8%;    
+    }
+} 
