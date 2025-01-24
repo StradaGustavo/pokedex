@@ -55,9 +55,10 @@ const getAnimatedSprite = (sprites) => {
 
 
 // Readjustment of names: 
+
 const resetPokemonNameStyle = () => {
     if (!isDarmanitanAdjusted) {
-
+        
     }
 };
 
@@ -68,6 +69,10 @@ function adjustTextForDarmanitan(elementName, elementNumber, maxWidth, baseFontS
     let fontSize = baseFontSize;
     if (text.length > 15) {
         fontSize = baseFontSize * 1.1; // Aumenta o tamanho da fonte
+
+        // Insere a quebra de linha após o hífen para "Darmanitan-Standard"
+        if (text === "Darmanitan-Standard") {
+        }
 
         // Reduz o tamanho do número para acompanhar
         elementNumber.style.fontSize = `${baseFontSize * 1.1}px`;
