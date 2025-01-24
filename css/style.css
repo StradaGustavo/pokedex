@@ -39,9 +39,9 @@ main{
 
 .pokemon-data{
     position: absolute;
-    top: 54.5%;
+    top: 55.2%;
     right: 27%;
-    font-size: clamp(10px, 5vw, 25px); /* clamp(min, default, max); =  This function prevents the font from leaving the screen*/
+    font-size: clamp(10px, 5vw, 20px); /* clamp(min, default, max); =  This function prevents the font from leaving the screen*/
     font-weight: 600;
     color: #aaa;
 }

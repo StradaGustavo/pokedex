@@ -54,36 +54,42 @@ const getAnimatedSprite = (sprites) => {
 };
 
 
-// Readjustment of names: 
-const resetPokemonNameStyle = () => {
-    if (!isDarmanitanAdjusted) {
+// Readjustment of name "Darmanitan-Standard": 
+let DarmanitanAdjusted = false;
 
-    }
+const resetPokemonNameStyle = () => {
+    const pokemonNameElements = document.querySelectorAll('.pokemon-name');
+    const pokemonNumberElements = document.querySelectorAll('.pokemon-number');
+
+    pokemonNameElements.forEach((elementName, index) => {
+        const text = elementName.textContent.trim();
+        
+        if (text.toLowerCase() !== 'darmanitan-standard') {
+            elementName.style.fontSize = '';
+            pokemonNumberElements[index].style.fontSize = ''; 
+        }
+    });
+
+    isDarmanitanAdjusted = false;
 };
 
 function adjustTextForDarmanitan(elementName, elementNumber, maxWidth, baseFontSize) {
-    let text = elementName.textContent.trim();
+    const text = elementName.textContent.trim().toLowerCase();
 
-    // Ajuste dinâmico do tamanho da fonte com base no comprimento do texto
-    let fontSize = baseFontSize;
-    if (text.length > 15) {
-        fontSize = baseFontSize * 1.1; // Aumenta o tamanho da fonte
+    if (text === 'darmanitan-standard') {
+        let fontSize = baseFontSize;
 
-        // Reduz o tamanho do número para acompanhar
-        elementNumber.style.fontSize = `${baseFontSize * 1.1}px`;
-    } else if (text.length > 10) {
-        fontSize = baseFontSize * 0.8; // Diminui para 80% do tamanho base
+        if (text.length > 15) {
+            fontSize = baseFontSize * 1.1;
+            elementNumber.style.fontSize = `${baseFontSize * 1.1}px`; 
+        } else if (text.length > 10) {
+            fontSize = baseFontSize * 0.8; 
+        }
+
+        elementName.style.fontSize = `${fontSize}px`;
+        isDarmanitanAdjusted = true;
     }
-
-    // Aplica o tamanho de fonte ajustado
-    elementName.style.fontSize = `${fontSize}px`;
 }
-
-
-
-
-
-
 
 const renderPokemon = async (pokemon) => {
     pokemonName.innerHTML = 'Loading...';
