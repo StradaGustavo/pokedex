@@ -160,7 +160,7 @@ main{
 
 @media (max-width: 480px) {
     main {
-        margin-top: 60px;
+        margin-top: 80px;
     }
     
     .suggestions {
