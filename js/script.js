@@ -189,3 +189,16 @@ document.addEventListener('click', (event) => {
 });
 
 renderPokemon(searchPokemon);
+
+// Button
+const playButton1 = document.querySelector('.btn-prev');
+const playButton2 = document.querySelector('.btn-next');
+const audioElement = document.getElementById('audioElement');
+
+function playAudio() {
+    audioElement.currentTime = 0;
+    audioElement.play();
+}
+
+playButton1.addEventListener('click', playAudio);
+playButton2.addEventListener('click', playAudio);
