@@ -164,7 +164,6 @@ main{
 
 @media (max-width: 480px) {
     main {
-        margin-top: 100px;
     }
     
     .suggestions {
