@@ -157,12 +157,15 @@ main{
 }
 
 @media (max-width: 480px) {
+    main {
+        margin-top: 100px;
+    }
+    
     .suggestions {
         max-height: 150px; 
         font-size: 14px; 
     }
 }
-
 
 @media (max-width: 768px) {
     main {
