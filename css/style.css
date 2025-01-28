@@ -158,7 +158,7 @@ main{
 
 @media (max-width: 430px) and(-webkit-touch-callout: none) {
     main {
-	height: 932px;
+	height: 600px;
     }
   }
 
