@@ -187,14 +187,4 @@ main{
     }
 }
 
-@media (max-width: 1400px) {
-    main {
-        margin-top: 60px;
-    }
-}
 
-@media (max-width: 1600px) {
-    main {
-        margin-top: 56px;    
-    }
-}
