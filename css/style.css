@@ -156,11 +156,14 @@ main{
     color: #007bff;
 }
 
-@media (max-width: 430px) and(-webkit-touch-callout: none) {
-    main {
-	max-height: 200px !important;
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* Código que funciona apenas no Safari */
+    @media (max-width: 430px) {
+        main {
+            max-height: 500px !important;
+        }
     }
-  }
+}
 
 @media (max-width: 480px) {    
     .suggestions {
