@@ -157,10 +157,9 @@ main{
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    /* Código que funciona apenas no Safari */
     @media (max-width: 430px) {
         main {
-            max-height: 500px !important;
+            margin-top: 80px !important;
         }
     }
 }
