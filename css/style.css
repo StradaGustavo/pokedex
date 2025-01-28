@@ -159,7 +159,7 @@ main{
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     @media (max-width: 430px) {
         main {
-            margin-top: 95px !important;
+            margin-top: 90px !important;
         }
     }
 }
